@@ -2,6 +2,8 @@
 
 Exemplo de REST utilizando Django Rest Framework e JWT
 
+pip install -r requirements.txt
+
 ## Uso para servidor em http://127.0.0.1:8000
 
 ### Produtos:

@@ -1,11 +1,13 @@
 from apploja.models import Order, Product
 from apploja.serializers import OrderSerializer, ProductSerializer
-from rest_framework import generics
+from rest_framework.generics import (ListCreateAPIView,
+                                     RetrieveUpdateDestroyAPIView,
+                                     GenericAPIView)
 from rest_framework.response import Response
 from rest_framework import renderers
 
 
-class OrderList(generics.ListCreateAPIView):
+class OrderList(ListCreateAPIView):
     """
     List all Orders, or create a new Order.
     """
@@ -13,7 +15,7 @@ class OrderList(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
 
 
-class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+class OrderDetail(RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a Order instance.
     """
@@ -21,7 +23,7 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = OrderSerializer
 
 
-class OrderDesc(generics.GenericAPIView):
+class OrderDesc(GenericAPIView):
     """
     Retrieve Order description
     """
@@ -33,7 +35,7 @@ class OrderDesc(generics.GenericAPIView):
         return Response(order.description)
 
 
-class ProductList(generics.ListCreateAPIView):
+class ProductList(ListCreateAPIView):
     """
     List all Product, or create a new Product.
     """
@@ -41,7 +43,7 @@ class ProductList(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
 
 
-class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+class ProductDetail(RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a Product instance.
     """
@@ -49,7 +51,7 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
 
 
-class ProductDesc(generics.GenericAPIView):
+class ProductDesc(GenericAPIView):
     """
     Retrieve Product description
     """

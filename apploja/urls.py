@@ -1,7 +1,11 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_swagger.views import get_swagger_view
 from apploja import views
+
+
+schema_view = get_swagger_view(title='REST-JWT API')
 
 urlpatterns = [
     url(r'^pedidos/$', views.OrderList.as_view()),
@@ -13,6 +17,9 @@ urlpatterns = [
 
     # Jwt Token
     url(r'^api-token-auth/', obtain_jwt_token),
+
+    # Swagger
+    url(r'^$', schema_view)
 ]
 
 # add sufix (ex .json)
